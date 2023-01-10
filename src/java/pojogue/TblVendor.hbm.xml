@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 17, 2022 3:06:59 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojogue.TblVendor" table="tbl_vendor" catalog="after_earth" optimistic-lock="version">
+        <id name="vendorId" type="java.lang.Integer">
+            <column name="vendor_id" />
+            <generator class="identity" />
+        </id>
+        <property name="vendorName" type="string">
+            <column name="vendor_name" length="50" not-null="true" />
+        </property>
+        <property name="vendorAddress" type="string">
+            <column name="vendor_address" length="150" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>iMed-Product-Editor</title>
+        <link rel="icon" type="image/png" href="assets/ico/ico.png" />
+    </h:head>
+    <style>
+body {
+ height: 100%;
+ margin: 0;
+}
+.page-holder {
+    min-height: 100vh;
+}
+.bg-cover {
+    background-size: cover !important;
+}
+    </style>
+    <h:body>
+<center>
+  <b:form horizontal="true">
+      <h:inputHidden
+        class="form-control input-focus"
+        id="id-hidden"
+        value="#{fd.produkId}"
+    />
+      <b:container>
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="6">
+                  <img src="img/logo.png" width="200 " style="margin-top: 50px; margin-bottom: 50px;" />
+                  <b ><h1 style="margin-bottom: 50px;">PRODUCT EDITOR</h1></b></b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b><h:outputText value="PRODUCT NAME :"/></b>
+              </b:column>
+              <b:column medium-screen="4">
+                  <b:inputText placeholder="PRODUCT NAME"  colMd="10" labelColMd="2" value="#{fd.produkName}" validatorMessage="PLEASE INPUT THE PRODUCT NAME" class="med">
+                    <f:facet name="prepend">
+                      <b:icon name="plus" />
+                    </f:facet>
+                  </b:inputText>
+              </b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b><h:outputText value="PRODUCT STOCK :"/></b>
+              </b:column>
+              <b:column medium-screen="4">
+                  <b:inputText placeholder="PRODUCT STOCK" mask="integer"  colMd="10" labelColMd="2" value="#{fd.stok}" validatorMessage="PLEASE INPUT THE PRODUCT STOCK" class="med">
+                    <f:facet name="prepend">
+                      <b:icon name="plus" />
+                    </f:facet>
+                  </b:inputText>
+              </b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b><h:outputText value="PRODUCT PRICE :"/></b>
+              </b:column>
+              <b:column medium-screen="4">
+                  <b:inputText placeholder="PRODUCT PRICE" mask="integer"  colMd="10" labelColMd="2" value="#{fd.harga}" validatorMessage="PLEASE INPUT THE PRODUCT PRICE" class="med">
+                    <f:facet name="prepend">
+                      <b:icon name="plus" />
+                    </f:facet>
+                  </b:inputText>
+              </b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b><h:outputText value="PRODUCT SIZE :"/></b>
+              </b:column>
+              <b:column medium-screen="4">
+                  <b:inputText placeholder="PRODUCT SIZE"  colMd="10" labelColMd="2" value="#{fd.ukuran}" validatorMessage="PLEASE INPUT THE PRODUCT SIZE" class="med">
+                    <f:facet name="prepend">
+                      <b:icon name="plus" />
+                    </f:facet>
+                  </b:inputText>
+              </b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+          
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b:commandButton value="Back" action="#{fd.goBack()}"   
+                 look="primary" style="width: 150px;"></b:commandButton>  
+              </b:column>
+              <b:column medium-screen="2">
+                  <b:commandButton action="#{fd.deleteProd()}" tooltip-position="right"
+                                  accesskey="" value="DELETE PRODUCT" look="danger" style="width: 150px;" ></b:commandButton> 
+              </b:column>
+              <b:column medium-screen="2">
+                  <b:commandButton action="#{fd.editMed()}" tooltip-position="right"
+                    accesskey="" value="EDIT PRODUCT" look="success" style="width: 150px;"></b:commandButton>
+              </b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+      </b:container>
+ </b:form>
+</center>
+    </h:body>
+</html>
+

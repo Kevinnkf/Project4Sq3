@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>DAOProduk.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">JaCoCoverage analysis of project &quot;aestore&quot; (powered by JaCoCo from EclEmma)</a> &gt; <a href="index.source.html" class="el_package">MODELUK</a> &gt; <span class="el_source">DAOProduk.java</span></div><h1>DAOProduk.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package MODELUK;
+import java.util.ArrayList;
+import java.util.List;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import pojogue.AeUtil;
+import pojogue.TblProduk;
+/**
+ *
+ * @author Alfian Fakhrudin
+ */
+
+<span class="fc" id="L19">public class DAOProduk {</span>
+    public List&lt;TblProduk&gt; retrieveTblProduk(){
+<span class="fc" id="L21">        List stud = new ArrayList();</span>
+<span class="fc" id="L22">        TblProduk stud1 = new TblProduk();</span>
+        
+<span class="fc" id="L24">        Transaction trans = null;</span>
+<span class="fc" id="L25">        Session session = AeUtil.getSessionFactory().openSession();</span>
+        try{
+<span class="fc" id="L27">            trans = session.beginTransaction();</span>
+<span class="fc" id="L28">            Query query = session.createQuery(&quot;from TblProduk&quot;);</span>
+<span class="fc" id="L29">            stud = query.list();</span>
+<span class="fc" id="L30">            trans.commit();</span>
+<span class="nc" id="L31">        }catch (Exception e){</span>
+<span class="nc" id="L32">            System.out.println(e);</span>
+<span class="fc" id="L33">        }</span>
+<span class="fc" id="L34">        return stud;</span>
+    }
+    
+        public List&lt;TblProduk&gt; getbyID(Integer idMed) {
+<span class="fc" id="L38">        TblProduk med = new TblProduk();</span>
+<span class="fc" id="L39">        List&lt;TblProduk&gt; listMed = new ArrayList();</span>
+<span class="fc" id="L40">        Transaction transaction = null;</span>
+<span class="fc" id="L41">        Session session = AeUtil.getSessionFactory().openSession();  </span>
+        try {
+<span class="fc" id="L43">            transaction = session.beginTransaction();</span>
+<span class="fc" id="L44">            Query query = session.createQuery(&quot;from TblProduk where produk_id = :id&quot;);</span>
+<span class="fc" id="L45">            query.setInteger(&quot;id&quot;, idMed);</span>
+<span class="fc" id="L46">            med = (TblProduk) query.uniqueResult();</span>
+<span class="fc" id="L47">            listMed = query.list();</span>
+<span class="fc" id="L48">            transaction.commit();</span>
+<span class="nc" id="L49">        } catch (Exception e) {</span>
+<span class="nc" id="L50">            System.out.println(e);</span>
+        } finally{
+<span class="pc" id="L52">            session.close();</span>
+<span class="pc" id="L53">        }</span>
+<span class="fc" id="L54">        return listMed;</span>
+    }
+    
+    // untuk add data
+    public void addMed(TblProduk medicine){
+<span class="fc" id="L59">        Transaction transaction = null;</span>
+<span class="fc" id="L60">        Session session = AeUtil.getSessionFactory().openSession();</span>
+        try {
+<span class="fc" id="L62">            transaction = session.beginTransaction();</span>
+<span class="fc" id="L63">            session.save(medicine);</span>
+<span class="fc" id="L64">            transaction.commit();</span>
+<span class="nc" id="L65">        } catch (Exception e) {</span>
+<span class="nc" id="L66">            System.out.println(e);</span>
+        } finally{
+<span class="pc" id="L68">            session.close();</span>
+<span class="pc" id="L69">        }</span>
+<span class="fc" id="L70">    }</span>
+    
+    // untuk delete berdcasarkan id
+    public void deleteMed(Integer idMed) {
+<span class="fc" id="L74">        Transaction transaction = null;</span>
+<span class="fc" id="L75">        Session session =AeUtil.getSessionFactory().openSession();</span>
+<span class="fc" id="L76">        transaction = session.beginTransaction();</span>
+        try {
+<span class="fc" id="L78">            String hql = &quot;delete from TblProduk where produk_id= :mid&quot;;</span>
+<span class="fc" id="L79">            Query q = session.createQuery(hql);</span>
+<span class="fc" id="L80">            q.setInteger(&quot;mid&quot;, idMed);</span>
+<span class="fc" id="L81">            q.executeUpdate();</span>
+<span class="fc" id="L82">            transaction.commit();</span>
+<span class="nc" id="L83">        } catch (Exception e) {</span>
+<span class="nc" id="L84">            System.out.println(e);</span>
+        } finally{
+<span class="pc" id="L86">            session.close();</span>
+<span class="pc" id="L87">        }</span>
+<span class="fc" id="L88">    }</span>
+    
+    // untuk edit
+    public void editMed(TblProduk medicine) {
+<span class="fc" id="L92">        Transaction transaction = null;</span>
+<span class="fc" id="L93">        Session session = AeUtil.getSessionFactory().openSession();</span>
+        try {
+<span class="fc" id="L95">            transaction = session.beginTransaction();</span>
+<span class="fc" id="L96">            session.update(medicine);</span>
+<span class="fc" id="L97">            transaction.commit();</span>
+<span class="nc" id="L98">        } catch (Exception e) {</span>
+<span class="nc" id="L99">            System.out.println(e);</span>
+        } finally{
+<span class="pc" id="L101">            session.close();</span>
+<span class="pc" id="L102">        }</span>
+<span class="fc" id="L103">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

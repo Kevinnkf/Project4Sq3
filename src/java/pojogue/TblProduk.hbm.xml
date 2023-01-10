@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 17, 2022 3:06:59 AM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="pojogue.TblProduk" table="tbl_produk" catalog="after_earth" optimistic-lock="version">
+        <id name="produkId" type="java.lang.Integer">
+            <column name="produk_id" />
+            <generator class="identity" />
+        </id>
+        <property name="produkName" type="string">
+            <column name="produk_name" length="100" not-null="true" />
+        </property>
+        <property name="stok" type="int">
+            <column name="stok" not-null="true" />
+        </property>
+        <property name="harga" type="int">
+            <column name="harga" not-null="true" />
+        </property>
+        <property name="ukuran" type="string">
+            <column name="ukuran" length="40" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

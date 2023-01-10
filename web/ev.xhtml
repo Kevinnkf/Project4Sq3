@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>iMed-Product-Editor</title>
+        <link rel="icon" type="image/png" href="assets/ico/ico.png" />
+    </h:head>
+    <style>
+body {
+ height: 100%;
+ margin: 0;
+}
+.page-holder {
+    min-height: 100vh;
+}
+.bg-cover {
+    background-size: cover !important;
+}
+    </style>
+    <h:body>
+<center>
+  <b:form horizontal="true">
+      <h:inputHidden
+        class="form-control input-focus"
+        id="id-hidden"
+        value="#{tblVendor.vendorId}"
+    />
+      <b:container>
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="6">
+                  <img src="img/logo.png" width="200" style="margin-top: 50px; margin-bottom: 50px;" />
+                  <b ><h1 style="margin-bottom: 50px;">VENDOR EDITOR</h1></b></b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b><h:outputText value="Vendor Name :"/></b>
+              </b:column>
+              <b:column medium-screen="4">
+                  <b:inputText placeholder="Vendor Name"  colMd="10" labelColMd="2" value="#{tblVendor.vendorName}" validatorMessage="PLEASE INPUT THE VENDOR NAME" class="med">
+                    <f:facet name="prepend">
+                      <b:icon name="plus" />
+                    </f:facet>
+                  </b:inputText>
+              </b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b><h:outputText value="Vendor Addres :"/></b>
+              </b:column>
+              <b:column medium-screen="4">
+                  <b:inputText placeholder="Vendor Addres"  colMd="10" labelColMd="2" value="#{tblVendor.vendorAddress}" validatorMessage="PLEASE INPUT THE VENDOR ADDRESS" class="med">
+                    <f:facet name="prepend">
+                      <b:icon name="plus" />
+                    </f:facet>
+                  </b:inputText>
+              </b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+          
+          <b:row>
+              <b:column medium-screen="3"/>
+              <b:column medium-screen="2">
+                  <b:commandButton value="Back" action="#{tblVendor.goBack()}"   
+                 look="primary" style="width: 150px;"></b:commandButton>  
+              </b:column>
+              <b:column medium-screen="2">
+                  <b:commandButton action="#{tblVendor.deleteVen()}" tooltip-position="right"
+                                  accesskey="" value="DELETE VENDOR" look="danger" style="width: 150px;" ></b:commandButton> 
+              </b:column>
+              <b:column medium-screen="2">
+                  <b:commandButton action="#{tblVendor.editMed()}" tooltip-position="right"
+                    accesskey="" value="EDIT VENDOR" look="success" style="width: 150px;"></b:commandButton>
+              </b:column>
+              <b:column medium-screen="3"/>
+          </b:row>
+      </b:container>
+ </b:form>
+</center>
+    </h:body>
+</html>
+
