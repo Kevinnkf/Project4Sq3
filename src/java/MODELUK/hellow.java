@@ -10,6 +10,6 @@ package MODELUK;
  * @author Kevin
  */
 public class hellow {
-    
+    String name = "kevin";
     
 }
